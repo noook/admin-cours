@@ -32,10 +32,16 @@ class Group
      */
     private Collection $members;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Course::class, mappedBy="classes")
+     */
+    private $courses;
+
     #[Pure] public function __construct()
     {
         $this->id = Uuid::v4();
         $this->members = new ArrayCollection();
+        $this->courses = new ArrayCollection();
     }
 
     public function getId(): UuidV4
@@ -75,6 +81,33 @@ class Group
     public function removeMember(User $member): self
     {
         $this->members->removeElement($member);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Course[]
+     */
+    public function getCourses(): Collection
+    {
+        return $this->courses;
+    }
+
+    public function addCourse(Course $course): self
+    {
+        if (!$this->courses->contains($course)) {
+            $this->courses[] = $course;
+            $course->addClass($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCourse(Course $course): self
+    {
+        if ($this->courses->removeElement($course)) {
+            $course->removeClass($this);
+        }
 
         return $this;
     }

@@ -2,26 +2,23 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Group;
+use App\Entity\Course;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class GroupCrudController extends AbstractCrudController
+class CourseCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Group::class;
+        return Course::class;
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
             TextField::new('name'),
-            AssociationField::new('members')
-                ->hideWhenCreating(),
-            AssociationField::new('courses')
+            AssociationField::new('exercises')
                 ->setRequired(false),
         ];
     }
