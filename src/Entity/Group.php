@@ -44,6 +44,11 @@ class Group
         $this->courses = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     public function getId(): UuidV4
     {
         return $this->id;

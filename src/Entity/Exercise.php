@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ExerciseRepository;
+use App\Validator\SlugValid;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\UuidV4;
 
@@ -32,6 +33,12 @@ class Exercise
      * @ORM\Column(type="text")
      */
     private $content;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    #[SlugValid]
+    private $slug;
 
     public function __construct() {
         $this->id = new UuidV4();
@@ -79,6 +86,18 @@ class Exercise
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
