@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ exercise.name }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/night-owl.min.css">
+{% endblock %}
+{% block body %}
+<style lang="windi">
+.markdown-body, .nav {
+    min-width: 200px;
+    max-width: 980px;
+    margin: 32px auto;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+</style>
+
+<div class="nav">
+    <a href="{{ path('course-exercises', { course: course.slug }) }}" class="text-black">
+        <i class="fas fa-arrow-left mr-1"></i>
+        <span>Retour</span>
+    </a>
+</div>
+<div class="markdown-body">
+    {% apply markdown_to_html %}
+    {{ exercise.content }}
+    {% endapply %}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+{% endblock %}

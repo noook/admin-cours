@@ -35,6 +35,11 @@ class Course
      */
     private Collection $exercises;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->id = new UuidV4();
@@ -114,6 +119,18 @@ class Course
                 $exercise->setCourse(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

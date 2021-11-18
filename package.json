@@ -1,0 +1,33 @@
+{
+  "name": "cours-admin",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noook/admin-cours.git"
+  },
+  "author": "Neil Richter <me@neilrichter.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noook/admin-cours/issues"
+  },
+  "homepage": "https://github.com/noook/admin-cours#readme",
+  "devDependencies": {
+    "@symfony/stimulus-bridge": "symfony/stimulus-bridge",
+    "@symfony/webpack-encore": "^1.6.1",
+    "core-js": "^3.19.1",
+    "regenerator-runtime": "^0.13.9",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.0.0",
+    "stimulus": "^3.0.1",
+    "webpack-notifier": "^1.14.1",
+    "windicss": "^3.2.1",
+    "windicss-webpack-plugin": "^1.5.8"
+  }
+}

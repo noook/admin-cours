@@ -25,7 +25,7 @@ class SlugValidValidator extends ConstraintValidator
         $course = $exercise->getCourse();
         $slugs = $course->getExercises()->map(fn (Exercise $exercise) => $exercise->getSlug());
 
-        if ($slugs->contains($value)) {
+        if ($exercise->getSlug() !== $value && $slugs->contains($value)) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();

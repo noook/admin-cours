@@ -1,0 +1,11 @@
+h1 {
+  @apply text-3xl font-semibold;
+}
+
+ul {
+  @apply m-8;
+
+  li a {
+    @apply text-blue-700 hover:underline;
+  }
+}

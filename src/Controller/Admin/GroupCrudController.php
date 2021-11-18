@@ -20,9 +20,11 @@ class GroupCrudController extends AbstractCrudController
         return [
             TextField::new('name'),
             AssociationField::new('members')
-                ->hideWhenCreating(),
+                ->hideWhenCreating()
+                ->setFormTypeOptionIfNotSet('by_reference', false),
             AssociationField::new('courses')
-                ->setRequired(false),
+                ->setRequired(false)
+                ->setFormTypeOptionIfNotSet('by_reference', false),
         ];
     }
 }

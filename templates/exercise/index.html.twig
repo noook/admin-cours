@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ course.name }}{% endblock %}
+{% block stylesheets %}
+{{ encore_entry_link_tags('list-view') }}
+{% endblock %}
+
+{% block body %}
+<style lang="scss">
+.page {
+    min-width: 200px;
+    max-width: 980px;
+    margin: 32px auto;
+}
+</style>
+
+<div class="page">
+    <h1>{{ course.name }}</h1>
+    <ul>
+        {% for exercise in exercises %}
+        <li><a href="{{ path('exercise', { course: course.slug, exercise:  exercise.slug }) }}">{{ exercise.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
