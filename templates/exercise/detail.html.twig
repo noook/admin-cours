@@ -2,9 +2,6 @@
 
 {% block title %}{{ exercise.name }}{% endblock %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/night-owl.min.css">
-{% endblock %}
 {% block body %}
 <style lang="windi">
 .markdown-body, .nav {
@@ -24,11 +21,18 @@
         <span>Retour</span>
     </a>
 </div>
-<div class="markdown-body">
+<div class="markdown-body" data>
     {% apply markdown_to_html %}
     {{ exercise.content }}
     {% endapply %}
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
+<script src="https://cdn.jsdelivr.net/gh/arnav-kr/Shikijs/dist/V1.2.1/shikiHighlighter.min.js"></script>
+<script>
+const codeElements = document.querySelectorAll('code[class^=language-]');
+[...codeElements].forEach(element => {
+    const lang = [...element.classList.values()].find(className => className.startsWith('language-'));
+    element.setAttribute('data-language', lang.match(/^language-(.+)/)[1]);
+    element.setAttribute('data-theme', 'github-light');
+});
+</script>
 {% endblock %}
