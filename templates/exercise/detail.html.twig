@@ -13,6 +13,11 @@
 .nav a:hover {
     text-decoration: underline;
 }
+
+.shiki {
+    padding: 0;
+    margin: 0;
+}
 </style>
 
 <div class="nav">
@@ -34,6 +39,7 @@ const codeElements = document.querySelectorAll('code[class^=language-]');
     element.setAttribute('data-language', lang.match(/^language-(.+)/)[1]);
     element.setAttribute('data-theme', 'github-light');
     Shiki.highlight(element);
+    element.style.removeProperty('background-color');
 });
 
 </script>
