@@ -29,5 +29,8 @@
     "webpack-notifier": "^1.14.1",
     "windicss": "^3.2.1",
     "windicss-webpack-plugin": "^1.5.8"
+  },
+  "dependencies": {
+    "shiki": "^0.9.12"
   }
 }

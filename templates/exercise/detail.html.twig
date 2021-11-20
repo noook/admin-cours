@@ -14,9 +14,8 @@
     text-decoration: underline;
 }
 
-.shiki {
-    padding: 0 !important;
-    margin: 0 !important;
+pre.shiki {
+    background-color: #f6f8fa !important;
 }
 </style>
 
@@ -26,25 +25,7 @@
         <span>Retour</span>
     </a>
 </div>
-<div class="markdown-body" data>
-    {% apply markdown_to_html %}
-    {{ exercise.content | raw }}
-    {% endapply %}
+<div class="markdown-body">
+    {{ content | raw }}
 </div>
-<script src="https://cdn.jsdelivr.net/gh/arnav-kr/Shikijs/dist/V1.2.1/shikiHighlighter.min.js"></script>
-<script>
-const codeElements = document.querySelectorAll('code[class^=language-]');
-[...codeElements].forEach(element => {
-    const lang = [...element.classList.values()].find(className => className.startsWith('language-'));
-    element.setAttribute('data-language', lang.match(/^language-(.+)/)[1]);
-    element.setAttribute('data-theme', 'github-light');
-    Shiki.highlight(element);
-});
-
-setTimeout(() => {
-    [...document.querySelectorAll('.shiki')].forEach(el => {
-        el.style.removeProperty('background-color');
-    });
-}, 1000);
-</script>
 {% endblock %}
