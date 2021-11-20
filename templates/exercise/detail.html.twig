@@ -41,8 +41,10 @@ const codeElements = document.querySelectorAll('code[class^=language-]');
     Shiki.highlight(element);
 });
 
-[...document.querySelectorAll('.shiki')].forEach(el => {
-    el.style.removeProperty('background-color');
-});
+setTimeout(() => {
+    [...document.querySelectorAll('.shiki')].forEach(el => {
+        el.style.removeProperty('background-color');
+    });
+}, 1000);
 </script>
 {% endblock %}
