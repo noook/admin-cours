@@ -33,6 +33,8 @@ const codeElements = document.querySelectorAll('code[class^=language-]');
     const lang = [...element.classList.values()].find(className => className.startsWith('language-'));
     element.setAttribute('data-language', lang.match(/^language-(.+)/)[1]);
     element.setAttribute('data-theme', 'github-light');
+    Shiki.highlight(element);
 });
+
 </script>
 {% endblock %}
